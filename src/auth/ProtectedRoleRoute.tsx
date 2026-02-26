@@ -13,7 +13,7 @@ export default function ProtectedRoleRoute({
   children,
   allowedRole,
 }: {
-  children: any;
+  children: React.ReactNode;
   allowedRole: string;
 }) {
   const user = useUser();
@@ -46,10 +46,9 @@ export default function ProtectedRoleRoute({
 
   if (!role) return <Navigate to="/" replace />;
 
-  // 🔥 Role hierarchy check
   if (roleHierarchy[role] < roleHierarchy[allowedRole]) {
     return <Navigate to="/" replace />;
   }
 
-  return children;
+  return <>{children}</>;
 }
