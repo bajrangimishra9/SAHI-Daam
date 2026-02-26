@@ -36,12 +36,12 @@ export default function PublicFooter() {
             <p className="font-semibold">Contact</p>
             <div className="mt-3 grid gap-2 text-muted-foreground">
               <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" /> demo@sahidam.in
+                <Mail className="h-4 w-4" /> sahi.daam0@gmail.com
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4" /> +91-XXXXXXXXXX
+                <Phone className="h-4 w-4" /> +91-9351501957
               </div>
-              <p className="text-xs text-muted-foreground">(Demo placeholders — backend next)</p>
+              <p className="text-xs text-muted-foreground">For inquiries, please contact us at the details above.</p>
             </div>
           </div>
         </div>
