@@ -41,14 +41,14 @@ export default function DocumentUploader({
       const publicUrl = urlData?.publicUrl ?? "";
 
       // 3) Insert metadata row in DB
-      const { error: dbError } = await supabase.from("supplier_documents").insert([
-        {
-          doc_type: docType,
-          file_name: safeName,
-          file_path: filePath,
-          public_url: publicUrl,
-        },
-      ]);
+      const { error: dbError } = await supabase
+        .from("supplier_documents")
+        .insert([
+          {
+            file_url: publicUrl,
+            document_type: docType,
+          },
+        ]);
 
       if (dbError) throw dbError;
 
