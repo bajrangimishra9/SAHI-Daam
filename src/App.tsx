@@ -14,14 +14,12 @@ import RoleSelect from "./pages/auth/RoleSelect";
 import VendorDashboard from "./pages/app/VendorDashboard";
 import SupplierDashboard from "./pages/app/SupplierDashboard";
 import AdminDashboard from "./pages/app/AdminDashboard";
-import DemoRoleRoute from "./components/auth/DemoRoleRoute";
+import Login from "./pages/Login";
 
-import IntroAnimation from "./components/motion/IntroAnimation"; 
-// If your file is in motion folder, use this instead:
-// import IntroAnimation from "./components/motion/IntroAnimation";
+import ProtectedRoleRoute from "@/components/auth/ProtectedRoleRoute";
+import IntroAnimation from "./components/motion/IntroAnimation";
 
 const queryClient = new QueryClient();
-
 const INTRO_SEEN_KEY = "sahi_dam_intro_seen";
 
 const App = () => {
@@ -45,10 +43,8 @@ const App = () => {
         <Toaster />
         <Sonner />
 
-        {/* ✅ Intro overlay */}
         {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
 
-        {/* ✅ App loads after intro with a clean fade-in */}
         {introComplete && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -61,30 +57,35 @@ const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/auth/role" element={<RoleSelect />} />
+                <Route path="/login" element={<Login />} />
 
-                {/* App (role dashboards) */}
+                {/* CLIENT */}
                 <Route
                   path="/client"
                   element={
-                    <DemoRoleRoute role="client">
+                    <ProtectedRoleRoute allowedRole="client">
                       <VendorDashboard />
-                    </DemoRoleRoute>
+                    </ProtectedRoleRoute>
                   }
                 />
+
+                {/* SUPPLIER */}
                 <Route
                   path="/supplier"
                   element={
-                    <DemoRoleRoute role="supplier">
+                    <ProtectedRoleRoute allowedRole="supplier">
                       <SupplierDashboard />
-                    </DemoRoleRoute>
+                    </ProtectedRoleRoute>
                   }
                 />
+
+                {/* ADMIN */}
                 <Route
                   path="/admin"
                   element={
-                    <DemoRoleRoute role="admin">
+                    <ProtectedRoleRoute allowedRole="admin">
                       <AdminDashboard />
-                    </DemoRoleRoute>
+                    </ProtectedRoleRoute>
                   }
                 />
 
