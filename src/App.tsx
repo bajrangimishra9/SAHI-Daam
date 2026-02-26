@@ -16,7 +16,7 @@ import SupplierDashboard from "./pages/app/SupplierDashboard";
 import AdminDashboard from "./pages/app/AdminDashboard";
 import Login from "./pages/Login";
 
-import ProtectedRoleRoute from "./components/auth/ProtectedRoleRoute";
+import ProtectedRoleRoute from "./auth/ProtectedRoleRoute";
 import IntroAnimation from "./components/motion/IntroAnimation";
 
 const queryClient = new QueryClient();
