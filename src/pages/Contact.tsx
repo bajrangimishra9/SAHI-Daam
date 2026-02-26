@@ -60,9 +60,11 @@ export default function Contact() {
             </form>
           </Card>
           <Card className="bg-card/70 p-6 shadow-elevated backdrop-blur">
-            <h2 className="text-xl font-bold">Next: production backend</h2>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Cloud enable करने पर real authentication, secure roles, supplier verification workflows, और live pricing data जोड़ेंगे.
+            <h2 className="text-xl font-bold">Ready to Get Started?</h2>
+            <p className="mt-2 text-muted-foreground">
+              See how delivery-aware pricing, verified suppliers, and transparent cost
+              breakdowns can simplify your construction procurement.
+              Schedule a demo and experience smarter sourcing with Sahi Daam.
             </p>
           </Card>
         </section>
