@@ -1,4 +1,5 @@
 import AppSidebar from "@/components/app/AppSidebar";
+import ProfileMenu from "@/components/app/ProfileMenu";
 import { Button } from "@/components/ui/button";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { clearSelectedRole, getSelectedRole, setSelectedRole } from "@/auth/role-state";
