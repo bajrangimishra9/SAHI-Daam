@@ -1,5 +1,4 @@
 import { supabase } from "@/supabaseClient";
-import { Button } from "@/components/ui/button";
 
 export default function GoogleLoginButton() {
   const login = async () => {
@@ -11,5 +10,12 @@ export default function GoogleLoginButton() {
     });
   };
 
-  return <Button onClick={login}>Continue with Google</Button>;
+  return (
+    <button
+      onClick={login}
+      className="rounded-lg bg-black px-6 py-3 text-white"
+    >
+      Continue with Google
+    </button>
+  );
 }
