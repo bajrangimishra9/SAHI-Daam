@@ -45,7 +45,7 @@ const Index = () => {
                 <div>
                   <Badge className="bg-secondary text-secondary-foreground" variant="secondary">
                     <Sparkles className="mr-2 h-4 w-4" />
-                    AI-powered material marketplace
+                    Smart-material marketplace
                   </Badge>
 
                   <h1 className="mt-5 text-balance text-4xl font-bold leading-[1.05] md:text-6xl">
