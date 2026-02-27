@@ -16,7 +16,7 @@ export default function PublicHeader() {
           </span>
           <div className="leading-tight">
             <p className="font-display text-lg font-bold">SAHI दाम</p>
-            <p className="-mt-1 text-xs text-muted-foreground">AI Construction Materials</p>
+            <p className="-mt-1 text-xs text-muted-foreground">Construction Materials</p>
           </div>
         </Link>
 
