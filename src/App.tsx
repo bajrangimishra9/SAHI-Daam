@@ -11,17 +11,23 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import RoleSelect from "./pages/auth/RoleSelect";
+
 import VendorDashboard from "./pages/app/VendorDashboard";
 import SupplierDashboard from "./pages/app/SupplierDashboard";
-import AdminDashboard from "./pages/app/AdminDashboard";
-import DemoRoleRoute from "./components/auth/DemoRoleRoute";
 
-import IntroAnimation from "./components/motion/IntroAnimation"; 
-// If your file is in motion folder, use this instead:
-// import IntroAnimation from "./components/motion/IntroAnimation";
+/* ✅ New Admin Pages */
+import AdminHome from "./pages/app/admin/AdminHome";
+import AdminMap from "./pages/app/admin/AdminMap";
+import AdminSuppliers from "./pages/app/admin/AdminSuppliers";
+import AdminVerification from "./pages/app/admin/AdminVerification";
+import AdminRules from "./pages/app/admin/AdminRules";
+import AdminAnalytics from "./pages/app/admin/AdminAnalytics";
+import AdminSettings from "./pages/app/admin/AdminSettings";
+
+import DemoRoleRoute from "./components/auth/DemoRoleRoute";
+import IntroAnimation from "./components/motion/IntroAnimation";
 
 const queryClient = new QueryClient();
-
 const INTRO_SEEN_KEY = "sahi_dam_intro_seen";
 
 const App = () => {
@@ -45,10 +51,8 @@ const App = () => {
         <Toaster />
         <Sonner />
 
-        {/* ✅ Intro overlay */}
         {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
 
-        {/* ✅ App loads after intro with a clean fade-in */}
         {introComplete && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -57,12 +61,13 @@ const App = () => {
           >
             <BrowserRouter>
               <Routes>
+                {/* Public Pages */}
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/auth/role" element={<RoleSelect />} />
 
-                {/* App (role dashboards) */}
+                {/* Client */}
                 <Route
                   path="/client"
                   element={
@@ -71,6 +76,8 @@ const App = () => {
                     </DemoRoleRoute>
                   }
                 />
+
+                {/* Supplier */}
                 <Route
                   path="/supplier"
                   element={
@@ -79,11 +86,61 @@ const App = () => {
                     </DemoRoleRoute>
                   }
                 />
+
+                {/* Admin Routes */}
                 <Route
                   path="/admin"
                   element={
                     <DemoRoleRoute role="admin">
-                      <AdminDashboard />
+                      <AdminHome />
+                    </DemoRoleRoute>
+                  }
+                />
+                <Route
+                  path="/admin/map"
+                  element={
+                    <DemoRoleRoute role="admin">
+                      <AdminMap />
+                    </DemoRoleRoute>
+                  }
+                />
+                <Route
+                  path="/admin/suppliers"
+                  element={
+                    <DemoRoleRoute role="admin">
+                      <AdminSuppliers />
+                    </DemoRoleRoute>
+                  }
+                />
+                <Route
+                  path="/admin/verification"
+                  element={
+                    <DemoRoleRoute role="admin">
+                      <AdminVerification />
+                    </DemoRoleRoute>
+                  }
+                />
+                <Route
+                  path="/admin/rules"
+                  element={
+                    <DemoRoleRoute role="admin">
+                      <AdminRules />
+                    </DemoRoleRoute>
+                  }
+                />
+                <Route
+                  path="/admin/analytics"
+                  element={
+                    <DemoRoleRoute role="admin">
+                      <AdminAnalytics />
+                    </DemoRoleRoute>
+                  }
+                />
+                <Route
+                  path="/admin/settings"
+                  element={
+                    <DemoRoleRoute role="admin">
+                      <AdminSettings />
                     </DemoRoleRoute>
                   }
                 />
