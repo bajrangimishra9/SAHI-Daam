@@ -9,10 +9,10 @@ export default function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const checkUser = async () => {
-      const { data } = await supabase.auth.getUser();
-
-      if (data?.user) {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session?.user) {
         const role = getSelectedRole();
 
         if (role === "client") navigate("/client", { replace: true });
@@ -20,9 +20,11 @@ export default function Login() {
         else if (role === "admin") navigate("/admin", { replace: true });
         else navigate("/", { replace: true });
       }
-    };
+    });
 
-    checkUser();
+    return () => {
+      subscription.unsubscribe();
+    };
   }, [navigate]);
 
   return (
