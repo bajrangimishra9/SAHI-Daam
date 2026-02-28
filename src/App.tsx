@@ -5,7 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import AuthCallback from "./pages/AuthCallback";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
@@ -58,6 +58,7 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/auth/role" element={<RoleSelect />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/auth/callback" element={<AuthCallback />} />
 
                 {/* CLIENT */}
                 <Route
