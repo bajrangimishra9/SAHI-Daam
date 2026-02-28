@@ -1,14 +1,6 @@
 import { NavLink } from "@/components/NavLink";
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
+  Sidebar,  SidebarContent,  SidebarGroup,  SidebarGroupContent,  SidebarGroupLabel,  SidebarMenu,  SidebarMenuButton,  SidebarMenuItem,  useSidebar,
 } from "@/components/ui/sidebar";
 import { AppRole } from "@/lib/roles";
 import { cn } from "@/lib/utils";
@@ -18,23 +10,24 @@ type Item = { title: string; url: string; icon: React.ComponentType<{ className?
 
 const vendorItems: Item[] = [
   { title: "Overview", url: "/client", icon: Gauge },
-  { title: "Marketplace", url: "/client#market", icon: PackageSearch },
-  { title: "Map", url: "/client#map", icon: MapPinned },
-  { title: "Analytics", url: "/client#analytics", icon: ChartLine },
+  { title: "Marketplace", url: "/client/market", icon: PackageSearch },
+  { title: "Map", url: "/client/map", icon: MapPinned },
+  { title: "Analytics", url: "/client/analytics", icon: ChartLine },
 ];
 
 const supplierItems: Item[] = [
   { title: "Dashboard", url: "/supplier", icon: Store },
-  { title: "Materials", url: "/supplier#materials", icon: PackageSearch },
-  { title: "Verification", url: "/supplier#verification", icon: ClipboardCheck },
-  { title: "Settings", url: "/supplier#settings", icon: Settings },
+  { title: "Materials", url: "/supplier/materials", icon: PackageSearch },
+  { title: "Verification", url: "/supplier/verification", icon: ClipboardCheck },
+  { title: "Settings", url: "/supplier/settings", icon: Settings },
 ];
 
 const adminItems: Item[] = [
   { title: "Admin Home", url: "/admin", icon: ShieldCheck },
-  { title: "Verification", url: "/admin#verify", icon: ClipboardCheck },
-  { title: "Rules", url: "/admin#rules", icon: ChartLine },
-  { title: "Settings", url: "/admin#settings", icon: Settings },
+  { title: "Map", url: "/client/map", icon: MapPinned },
+  { title: "Verification", url: "/admin/verification", icon: ClipboardCheck },
+  { title: "Rules", url: "/admin/rules", icon: ChartLine },
+  { title: "Settings", url: "/admin/settings", icon: Settings },
 ];
 
 function itemsForRole(role: AppRole): Item[] {
@@ -49,7 +42,7 @@ export default function AppSidebar({ role }: { role: AppRole }) {
   const items = itemsForRole(role);
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="fixed top-14 left-0 h-[calc(100vh-3.5rem)]">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>{role === "client" ? "Client" : role === "supplier" ? "Supplier" : "Admin"}</SidebarGroupLabel>
