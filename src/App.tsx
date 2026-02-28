@@ -10,7 +10,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import RoleSelect from "./pages/auth/RoleSelect";
 import VendorDashboard from "./pages/app/VendorDashboard";
 import SupplierDashboard from "./pages/app/SupplierDashboard";
 import AdminDashboard from "./pages/app/AdminDashboard";
@@ -60,7 +59,6 @@ const App = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/auth/role" element={<RoleSelect />} />
 
                 {/* App (role dashboards) */}
                 <Route
