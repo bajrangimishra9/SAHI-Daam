@@ -5,7 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { motion } from "framer-motion";
-import AuthCallback from "./pages/AuthCallback";
+
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
@@ -14,12 +14,14 @@ import RoleSelect from "./pages/auth/RoleSelect";
 import VendorDashboard from "./pages/app/VendorDashboard";
 import SupplierDashboard from "./pages/app/SupplierDashboard";
 import AdminDashboard from "./pages/app/AdminDashboard";
-import Login from "./pages/Login";
+import DemoRoleRoute from "./components/auth/DemoRoleRoute";
 
-import ProtectedRoleRoute from "./auth/ProtectedRoleRoute";
-import IntroAnimation from "./components/motion/IntroAnimation";
+import IntroAnimation from "./components/motion/IntroAnimation"; 
+// If your file is in motion folder, use this instead:
+// import IntroAnimation from "./components/motion/IntroAnimation";
 
 const queryClient = new QueryClient();
+
 const INTRO_SEEN_KEY = "sahi_dam_intro_seen";
 
 const App = () => {
@@ -43,8 +45,10 @@ const App = () => {
         <Toaster />
         <Sonner />
 
+        {/* ✅ Intro overlay */}
         {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
 
+        {/* ✅ App loads after intro with a clean fade-in */}
         {introComplete && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -57,36 +61,30 @@ const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/auth/role" element={<RoleSelect />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/auth/callback" element={<AuthCallback />} />
 
-                {/* CLIENT */}
+                {/* App (role dashboards) */}
                 <Route
                   path="/client"
                   element={
-                    <ProtectedRoleRoute allowedRole="client">
+                    <DemoRoleRoute role="client">
                       <VendorDashboard />
-                    </ProtectedRoleRoute>
+                    </DemoRoleRoute>
                   }
                 />
-
-                {/* SUPPLIER */}
                 <Route
                   path="/supplier"
                   element={
-                    <ProtectedRoleRoute allowedRole="supplier">
+                    <DemoRoleRoute role="supplier">
                       <SupplierDashboard />
-                    </ProtectedRoleRoute>
+                    </DemoRoleRoute>
                   }
                 />
-
-                {/* ADMIN */}
                 <Route
                   path="/admin"
                   element={
-                    <ProtectedRoleRoute allowedRole="admin">
+                    <DemoRoleRoute role="admin">
                       <AdminDashboard />
-                    </ProtectedRoleRoute>
+                    </DemoRoleRoute>
                   }
                 />
 
